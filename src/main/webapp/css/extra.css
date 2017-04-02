@@ -1,0 +1,16 @@
+.selectmin {
+    min-width:90%;
+}
+
+body {
+    background-image: url("../images/lgrey082.gif");
+    background-color: #eee;
+}
+
+.foo {
+    background-color: #ffffff;
+}
+
+th {
+    text-align: center;
+}
