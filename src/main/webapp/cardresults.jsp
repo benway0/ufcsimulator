@@ -14,7 +14,6 @@
 </head>
 <body>
 <c:set var="fights" value="${fightList}" />
-<c:set var="count" value="${fn:length(fights)-1}" />
 <div class="container-fluid">
     <div class="row" >
         <div class="col-sm-1 col-md-1"></div>
@@ -25,73 +24,70 @@
                     <div class="col-sm-10 col-md-10" style="text-align:center">
                         <br />
                         <table class="table table-striped table-condensed">
-                            <thead><tr><th colspan="3">Early Prelims</th></tr></thead>
-                            <c:forEach var="i" begin="1" end="2">
+                            <thead><tr><th colspan="3">Main Card</th></tr></thead>
+                            <c:forEach items="${fights}" var="i" begin="0" end="4">
                                 <tr>
                                     <td style="text-align:center">
-                                        <img src="${fights.get(count).getWinner().getProfile_image()}" />
+                                        <img src="${i.winner.profile_image}" />
                                     </td>
                                     <td style="text-align:center; vertical-align:middle">
-                                        <c:if test="${fights.get(count).isDraw()}">vs.</c:if>
-                                        <c:if test="${!fights.get(count).isDraw()}">def.</c:if>
+                                        <c:if test="${i.draw}">vs.</c:if>
+                                        <c:if test="${!i.draw}">def.</c:if>
                                     </td>
                                     <td style="text-align:center">
-                                        <img src="${fights.get(count).getLoser().getProfile_image()}"/>
+                                        <img src="${i.loser.profile_image}"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center; vertical-align:middle" colspan="3">
-                                        ${fights.get(count).getResult()}
-                                        <c:if test="${fights.get(count).isDecision()}">
-                                            ${fights.get(count).getScores()}
+                                        ${i.result}
+                                        <c:if test="${i.decision}">
+                                            ${i.scores}
                                         </c:if>
                                     </td>
                                 </tr>
-                                <c:set var="count" value="${count-1}" />
                             </c:forEach></table>
                         <table class="table table-striped table-condensed">
                             <thead><tr><th colspan="3">Preliminary Card</th></tr></thead>
-                            <c:forEach var="i" begin="3" end="6">
+                            <c:forEach items="${fights}" var="i" begin="5" end="8">
                                 <tr>
                                     <td style="text-align:center">
-                                        <img src="${fights.get(count).getWinner().getProfile_image()}" />
+                                        <img src="${i.winner.profile_image}" />
                                     </td>
                                     <td style="text-align:center; vertical-align:middle">def.</td>
                                     <td style="text-align:center">
-                                        <img src="${fights.get(count).getLoser().getProfile_image()}" />
+                                        <img src="${i.loser.profile_image}" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center; vertical-align:middle" colspan="3">
-                                        ${fights.get(count).getResult()}
-                                        <c:if test="${fights.get(count).isDecision()}">
-                                            ${fights.get(count).getScores()}
+                                        ${i.result}
+                                        <c:if test="${i.decision}">
+                                            ${i.scores}
                                         </c:if>
                                     </td>
                                 </tr>
-                                <c:set var="count" value="${count-1}" />
                             </c:forEach></table>
                         <table class="table table-striped table-condensed">
-                            <thead><tr><th colspan="3">Main Card</th></tr></thead>
-                            <c:forEach var="i" begin="7" end="11">
+                            <thead><tr><th colspan="3">Early Prelims</th></tr></thead>
+                            <c:forEach items="${fights}" var="i" begin="9" end="11">
                                 <tr>
                                     <td style="text-align:center">
-                                        <img src="${fights.get(count).getWinner().getProfile_image()}" />
+                                        <img src="${i.winner.profile_image}" />
                                     </td>
                                     <td style="text-align:center; vertical-align:middle">def.</td>
                                     <td style="text-align:center">
-                                        <img src="${fights.get(count).getLoser().getProfile_image()}" />
+                                        <img src="${i.loser.profile_image}" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align:center; vertical-align:middle" colspan="3">
-                                        ${fights.get(count).getResult()}
-                                        <c:if test="${fights.get(count).isDecision()}">
-                                            ${fights.get(count).getScores()}
+                                        ${i.result}
+                                        <c:if test="${i.decision}">
+                                            ${i.scores}
                                         </c:if>
                                     </td>
                                 </tr>
-                                <c:set var="count" value="${count-1}" />
                             </c:forEach>
                         </table>
                     </div>
