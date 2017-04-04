@@ -101,7 +101,7 @@
                                 </c:if>
                                 <c:forEach items="${resultsList}" varStatus="status">
                                     <tr>
-                                        <td>${resultsList.get(resultsLen - status.count)}</td>
+                                        <td style="text-align:left">${resultsList[resultsLen - status.count]}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

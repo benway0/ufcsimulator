@@ -77,7 +77,7 @@
                         <tbody>
                         <c:forEach items='${wc}' var='f' varStatus='theRank'>
                             <c:choose>
-                                <c:when test="${f.isTitle_holder()}">
+                                <c:when test="${f.title_holder}">
                                     <tr style="background-color:#ffe680">
                                         <td style="text-align:center"><b>C</b></td>
                                         <td>${f.first_name} ${f.last_name}</td>
@@ -122,13 +122,17 @@
                     <br />
                     <form id="tform" action="fight" method="post"></form>
                     <table><tr>
+                            <c:forEach items="${wc}" var="i" begin="0" end="0">
                             <td style="text-align:center">
-                                <img src="${wc.get(0).profile_image}" height="80%" width="80%" id ="imgid"/>
+                                <img src="${i.profile_image}" height="80%" width="80%" id ="imgid"/>
                             </td>
+                            </c:forEach>
                             <td></td>
+                            <c:forEach items="${wc}" var="i" begin="1" end="1">
                             <td style="text-align:center">
-                                <img src="${wc.get(1).profile_image}" height="80%" width="80%" id="imgid2"/>
+                                <img src="${i.profile_image}" height="80%" width="80%" id="imgid2"/>
                             </td>
+                            </c:forEach>
                         </tr>
                         <tr>
                             <td style="text-align:center">
@@ -166,10 +170,10 @@
                     </c:if>
                     <c:if test="${fight != null}">
                         <div class="alert alert-success fade in" style="text-align:center">
-                            ${fight.getResult()}
-                            <c:if test="${fight.isDecision()}">
+                            ${fight.result}
+                            <c:if test="${fight.decision}">
                                 <br />
-                                ${fight.getScores()}
+                                ${fight.scores}
                             </c:if>
                         </div>
                     </c:if>
